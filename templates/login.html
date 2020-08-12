@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customcss %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+{% endblock customcss %}
+
+{% block content %}
+
+<script src="/static/js/login.js"></script>
+{% if Error %}
+    <div class="alert alert-danger" role="alert">
+        <p>{{ Error }}</p>
+    </div>
+{% endif %}
+
+<main role="main">
+    <form class="form-signin" method="POST" action="{% url 'login' %}">{% csrf_token %}{{form}}
+        <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">サインイン</h1>
+        <label for="inputUserName" class="sr-only">user name</label>
+        <input type="text" id="inputUserName" class="form-control" name="username" placeholder="ユーザ名" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="パスワード" required>
+        <div class="checkbox mb-3">
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">サインアップ</button>
+    </form>
+</main>
+{% endblock content %}

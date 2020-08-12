@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customcss %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/historyDetail.css' %}">
+{% endblock customcss %}
+
+{% block content %}
+
+<script src="/static/js/historyDetail.js"></script>
+
+<main role="main">
+
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1>古志ギャング</h1>
+      <p class="lead text-muted">名人メンテナンス</p>
+    </div>
+  </section>
+
+  <form action="{% url 'userCtl' %}" method="post">{% csrf_token %}{{form}}
+    <div class="py-5 bg-light">
+        <div class="container">
+            <div class="btnArea">
+                <button type="submit" name="btnBack" class="btn btn-info" value="0">戻る</button>
+                <button type="submit" name="btnAdd" class="btn btn-primary" value="1">追加</button>
+                <button type="submit" name="btnUpdate" class="btn btn-primary" value="2">更新</button>
+                <button type="submit" name="btnDelete" class="btn btn-danger" value="3">削除</button>
+            </div>
+            <div class="row" style="padding-top:50px;">
+                <div class="col-md-2">名前</div>
+                <div class="col-md-8">
+                    <input type=text name="name" maxlength="10" value="{{ object_user.name }}">
+                </div>
+            </div>
+            <div class="row" style="padding-top:30px;">
+                <div class="col-md-2">パスワード</div>
+                <div class="col-md-8">
+                    <input type=text name="name" maxlength="10" value="{{ object_user.password }}">
+                </div>
+            </div>
+            <div class="row" style="padding-top:30px;">
+                <div class="col-md-2">パスワード(確認用)</div>
+                <div class="col-md-8">
+                    <input type=text name="name" maxlength="10" value="">
+                </div>
+            </div>
+            <div class="row" style="padding-top:30px;">
+                <div class="col-md-2">ファイル</div>
+                <div class="col-md-8">
+                    <p class="file-upload">Currently: <a href="/media/userHirose.png">{{ object_user.image }}</a><br>
+                        Change:
+                        <input type="file" name="image" accept="image/*" id="id_image">
+                    </p>
+                </div>
+            </div>
+
+            <div class="row" style="padding-top:30px;">
+                <div class="col-md-2">ファイル</div>
+                <div class="col-md-8">
+                    <p class="file-upload">Currently: <a href="/media/userHirose.png">{{ object_user.image }}</a><br>
+                        Change:
+                        <input type="file" name="image" accept="image/*" id="id_image">
+                    </p>
+                </div>
+            </div>
+
+            <div class="row" style="padding-top:30px;">
+                <div class="col-md-2">ファイル</div>
+                <div class="col-md-8">
+                    <p class="file-upload">Currently: <a href="/media/userHirose.png">{{ object_user.image }}</a><br>
+                        Change:
+                        <input type="file" name="image" accept="image/*" id="id_image">
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="userId" value="{{ object_user.id }}">
+  </form>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+</script>
+<script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous">
+</script>
+{% endblock content %}
